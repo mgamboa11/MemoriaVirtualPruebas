@@ -23,13 +23,13 @@ public class ResidentSet {
             // Initialize each object
             if ((contador < cantidad_maxima_frames) && (Main.memoria_virtual.get(i).contenido.nombre.equalsIgnoreCase(nombre_proceso))){
                 //System.out.println("Primer If, Nombre proceso: "+nombre_proceso+" - Contador: "+contador);
-                MemoriaFisica espacio_reservado = new MemoriaFisica(true,nombre_proceso,null);
+                Frame espacio_reservado = new Frame(true,nombre_proceso);
                 Main.memoria_fisica.add(ubicacion_fisica,espacio_reservado); 
                 ubicacion_fisica++; 
                 contador++; 
             }
             else if ((contador < cantidad_maxima_frames) & (!(Main.memoria_virtual.get(i).contenido.nombre.equalsIgnoreCase(nombre_proceso)))){ 
-                MemoriaFisica espacio_reservado = new MemoriaFisica(true,nombre_proceso,null);
+                Frame espacio_reservado = new Frame(true,nombre_proceso);
                 Main.memoria_fisica.add(ubicacion_fisica,espacio_reservado); 
                 contador++; 
                 ubicacion_fisica++; 
@@ -38,7 +38,7 @@ public class ResidentSet {
             else{
                 if (!(Main.memoria_virtual.get(i).contenido.nombre.equalsIgnoreCase(nombre_proceso))){
                     nombre_proceso=Main.memoria_virtual.get(i).contenido.nombre; 
-                    MemoriaFisica espacio_reservado = new MemoriaFisica(true,nombre_proceso,null);
+                    Frame espacio_reservado = new Frame(true,nombre_proceso);
                     Main.memoria_fisica.add(ubicacion_fisica,espacio_reservado);
                     contador=1; 
                     ubicacion_fisica++; 
@@ -67,12 +67,12 @@ public class ResidentSet {
             else{
                 if (Main.memoria_fisica.size()< Main.tamaño_memoria_fisica){
                     while ((((Main.memoria_fisica.size())+crecimiento)<Main.tamaño_memoria_fisica)&(crecimiento!=0)){
-                        MemoriaFisica espacio_reservado = new MemoriaFisica(true,nombre_proceso,null);
+                        Frame espacio_reservado = new Frame(true,nombre_proceso);
                         Main.memoria_fisica.add(espacio_reservado);
                         crecimiento--; 
                     }
-                    
                 }
+                
             }
         }
     }
@@ -85,6 +85,12 @@ public class ResidentSet {
             }
         }
         return contador;
+    }
+    
+    public void imprimir_frames(){
+        for (int i = 0; i < Main.memoria_fisica.size(); i++ ) {
+            System.out.println(Main.memoria_fisica.get(i).proceso_reserva);
+        }
     }
   
     

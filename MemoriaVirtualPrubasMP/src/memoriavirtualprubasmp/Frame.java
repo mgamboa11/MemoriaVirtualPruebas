@@ -18,6 +18,8 @@ public class Frame {
     
     public int identificador;
     public Proceso contenido;
+    public boolean esta_reservado;
+    public String proceso_reserva;
     public int tamano;
     public int[][] localizacion = new int[1][3]; //ubicacion_memoriaF
     public Date TS1;
@@ -35,6 +37,11 @@ public class Frame {
         this.tamano = tamano;
         this.TS1 = TS1; //=DateTime.parse("04/02/2011 20:27:05",DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss"));;
         this.TS2 = TS2; //=DateTime.parse("04/02/2011 20:27:05",DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss"));;
+    }
+    
+    public Frame (boolean reservado, String proceso_reserva){
+        this.esta_reservado = reservado;
+        this.proceso_reserva = proceso_reserva;
     }
     
 }

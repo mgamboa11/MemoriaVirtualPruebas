@@ -21,7 +21,7 @@ public class Main {
     
     //public static List<Frame> memoria_fisica = new LinkedList<Frame>();
     
-    public static List<MemoriaFisica> memoria_fisica = new LinkedList<MemoriaFisica>();
+    public static List<Frame> memoria_fisica = new LinkedList<Frame>();
     public static List<Frame>memoria_virtual = new LinkedList<Frame>();; 
     
     public static boolean placement_first_available = false; //true si es first available, false si es next availablew
@@ -36,7 +36,11 @@ public class Main {
     //TAMANO MEMPORIA FISICA
     public static int tamaño_memoria_fisica=16;
     
+    
+    
     public static void main(String[] args) {
+        
+        
         Proceso p1 = new Proceso("P1",2,50);
         Proceso p2 = new Proceso("P2",2,50);
         Proceso p3 = new Proceso("P3",2,70);
@@ -71,17 +75,12 @@ public class Main {
         res.ResidentSetFijo(2);
         
         System.out.println("----------------------------------------------------------------------------------");
-        System.out.println(memoria_fisica.get(0).proceso_reserva); 
-        System.out.println(memoria_fisica.get(1).proceso_reserva); 
         
-        System.out.println(memoria_fisica.get(2).proceso_reserva); 
-        System.out.println(memoria_fisica.get(3).proceso_reserva); 
+        res.imprimir_frames(); 
         
-        System.out.println(memoria_fisica.get(4).proceso_reserva); 
-        System.out.println(memoria_fisica.get(5).proceso_reserva); 
-        
-        //System.out.println(memoria_fisica.get(6).contenido.nombre); 
-        //System.out.println(memoria_fisica.get(7).contenido.nombre); 
+        res.ResidentSetVariableIncrementar("P3");
+        System.out.println("----------------------------------------------------------------------------------");
+        res.imprimir_frames(); 
     }
     
 }
