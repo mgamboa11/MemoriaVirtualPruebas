@@ -33,6 +33,9 @@ public class Main {
     public static int tamaño_maximo;
     public static int crecimiento_por_reemplazo;
     
+    //TAMANO MEMPORIA FISICA
+    public static int tamaño_memoria_fisica=16;
+    
     public static void main(String[] args) {
         Proceso p1 = new Proceso("P1",2,50);
         Proceso p2 = new Proceso("P2",2,50);
@@ -68,15 +71,14 @@ public class Main {
         res.ResidentSetFijo(2);
         
         System.out.println("----------------------------------------------------------------------------------");
-        System.out.println(memoria_fisica.get(0).contenido.nombre); 
-        System.out.println(memoria_fisica.get(1).contenido.nombre); 
+        System.out.println(memoria_fisica.get(0).proceso_reserva); 
+        System.out.println(memoria_fisica.get(1).proceso_reserva); 
         
-        System.out.println(memoria_fisica.get(2).contenido.nombre); 
-        System.out.println("Reservado"); 
+        System.out.println(memoria_fisica.get(2).proceso_reserva); 
+        System.out.println(memoria_fisica.get(3).proceso_reserva); 
         
-        //System.out.println(memoria_fisica.get(3).contenido.nombre); 
-        System.out.println(memoria_fisica.get(4).contenido.nombre); 
-        System.out.println(memoria_fisica.get(5).contenido.nombre); 
+        System.out.println(memoria_fisica.get(4).proceso_reserva); 
+        System.out.println(memoria_fisica.get(5).proceso_reserva); 
         
         //System.out.println(memoria_fisica.get(6).contenido.nombre); 
         //System.out.println(memoria_fisica.get(7).contenido.nombre); 

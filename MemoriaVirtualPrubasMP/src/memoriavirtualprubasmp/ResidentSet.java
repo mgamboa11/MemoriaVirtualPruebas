@@ -59,8 +59,21 @@ public class ResidentSet {
     
     public void ResidentSetVariableIncrementar(String nombre_proceso){
         int cantidad_maxima =5; //Cambiarlo por la variable global
-        if (Contar_Reservados(nombre_proceso)>=cantidad_maxima){
-            
+        int crecimiento=1; 
+        if (Contar_Reservados(nombre_proceso)<cantidad_maxima){
+            if (Main.placement_first_available){
+                
+            }
+            else{
+                if (Main.memoria_fisica.size()< Main.tamaño_memoria_fisica){
+                    while ((((Main.memoria_fisica.size())+crecimiento)<Main.tamaño_memoria_fisica)&(crecimiento!=0)){
+                        MemoriaFisica espacio_reservado = new MemoriaFisica(true,nombre_proceso,null);
+                        Main.memoria_fisica.add(espacio_reservado);
+                        crecimiento--; 
+                    }
+                    
+                }
+            }
         }
     }
     
