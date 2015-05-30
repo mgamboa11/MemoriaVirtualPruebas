@@ -23,13 +23,14 @@ public class ResidentSet {
             // Initialize each object
             if ((contador < cantidad_maxima_frames) && (Main.memoria_virtual.get(i).contenido.nombre.equalsIgnoreCase(nombre_proceso))){
                 //System.out.println("Primer If, Nombre proceso: "+nombre_proceso+" - Contador: "+contador);
-                Main.memoria_fisica.add(ubicacion_fisica,Main.memoria_virtual.get(i)); 
-                //System.out.println("Primer If, Cambio Memoria Fisica, Proceso Actual: "+nombre_proceso+" - Nombre Cambiado: "+Main.memoria_fisica.get(ubicacion_fisica).contenido.nombre);
+                MemoriaFisica espacio_reservado = new MemoriaFisica(true,nombre_proceso,null);
+                Main.memoria_fisica.add(ubicacion_fisica,espacio_reservado); 
                 ubicacion_fisica++; 
                 contador++; 
             }
             else if ((contador < cantidad_maxima_frames) & (!(Main.memoria_virtual.get(i).contenido.nombre.equalsIgnoreCase(nombre_proceso)))){ 
-                Main.memoria_fisica.add(ubicacion_fisica,null); 
+                MemoriaFisica espacio_reservado = new MemoriaFisica(true,nombre_proceso,null);
+                Main.memoria_fisica.add(ubicacion_fisica,espacio_reservado); 
                 contador++; 
                 ubicacion_fisica++; 
                 //System.out.println("Segundo If, Nombre proceso espacio reservado: "+nombre_proceso+" - Contador: "+contador);   
@@ -37,7 +38,8 @@ public class ResidentSet {
             else{
                 if (!(Main.memoria_virtual.get(i).contenido.nombre.equalsIgnoreCase(nombre_proceso))){
                     nombre_proceso=Main.memoria_virtual.get(i).contenido.nombre; 
-                    Main.memoria_fisica.add(ubicacion_fisica,Main.memoria_virtual.get(i));
+                    MemoriaFisica espacio_reservado = new MemoriaFisica(true,nombre_proceso,null);
+                    Main.memoria_fisica.add(ubicacion_fisica,espacio_reservado);
                     contador=1; 
                     ubicacion_fisica++; 
                 }
@@ -47,18 +49,30 @@ public class ResidentSet {
     
     
     
-    public void ResidentSetVariable (String nombre_proceso){
-        int tamano_inicial=2; 
-        int tamano_maximo=5; 
-        int tamano_crecimiento=2; 
-        //Se ocupa el next o el first ??
+    
+    public void ResidentSetVariableInicial(){
+        int tamano_inicial= 3; 
         
-        for (int i = 0; i < Main.memoria_virtual.size(); i++ ) {
-            
-        }
+        ResidentSetFijo(tamano_inicial);
         
     }
     
+    public void ResidentSetVariableIncrementar(String nombre_proceso){
+        int cantidad_maxima =5; //Cambiarlo por la variable global
+        if (Contar_Reservados(nombre_proceso)>=cantidad_maxima){
+            
+        }
+    }
+    
+    public int Contar_Reservados (String nombre_proceso){
+        int contador = 0;
+        for (int i = 0; i < Main.memoria_fisica.size(); i++ ) {
+            if (Main.memoria_fisica.get(i).proceso_reserva.equalsIgnoreCase(nombre_proceso)){
+                contador++;
+            }
+        }
+        return contador;
+    }
   
     
     

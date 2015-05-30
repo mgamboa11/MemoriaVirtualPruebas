@@ -16,6 +16,7 @@ public class Proceso {
     public int prioridad;
     public int tamano;
     public int cantPartes;
+    public boolean esta_bloqueado;
     public int[][] UMF = new int[cantPartes][3]; //ubicacion_memoriaF
     public int[][] UMV = new int[cantPartes][3]; //ubicacion_memoriaV
 

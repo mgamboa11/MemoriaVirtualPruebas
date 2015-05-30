@@ -19,10 +19,19 @@ public class Main {
     public static List<String> lineas_archivos_referencias;
     public static List<Proceso> lista_Procesos;
     
-    public static List<Frame> memoria_fisica = new LinkedList<Frame>();
+    //public static List<Frame> memoria_fisica = new LinkedList<Frame>();
+    
+    public static List<MemoriaFisica> memoria_fisica = new LinkedList<MemoriaFisica>();
     public static List<Frame>memoria_virtual = new LinkedList<Frame>();; 
     
+    public static boolean placement_first_available = false; //true si es first available, false si es next availablew
+    public static int puntero_memoria_virtual= 0; 
     public static int tamaño_fijo; 
+    
+    //VARIABLE
+    public static int tamaño_inicial;
+    public static int tamaño_maximo;
+    public static int crecimiento_por_reemplazo;
     
     public static void main(String[] args) {
         Proceso p1 = new Proceso("P1",2,50);
