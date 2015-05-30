@@ -19,6 +19,8 @@ public class Frame {
     public int identificador;
     public Proceso contenido;
     public boolean esta_reservado;
+    public boolean esta_ocupado; 
+    public boolean modificado; 
     public String proceso_reserva;
     public int tamano;
     public int[][] localizacion = new int[1][3]; //ubicacion_memoriaF

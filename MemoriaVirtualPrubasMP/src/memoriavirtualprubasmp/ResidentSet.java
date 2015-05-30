@@ -90,6 +90,7 @@ public class ResidentSet {
     public void imprimir_frames(){
         for (int i = 0; i < Main.memoria_fisica.size(); i++ ) {
             System.out.println(Main.memoria_fisica.get(i).proceso_reserva);
+            
         }
     }
   
